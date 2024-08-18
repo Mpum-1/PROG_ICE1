@@ -1,0 +1,14 @@
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.exe
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.deps.json
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.runtimeconfig.json
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.dll
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.pdb
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.AssemblyInfoInputs.cache
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.AssemblyInfo.cs
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.dll
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\refint\StudentManagementSystem.dll
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.pdb
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.genruntimeconfig.cache
+C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\ref\StudentManagementSystem.dll
