@@ -12,3 +12,18 @@ C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\r
 C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.pdb
 C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.genruntimeconfig.cache
 C:\Users\Lebohang Nicole\source\repos\StudentManagementSystem\obj\Debug\net8.0\ref\StudentManagementSystem.dll
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.exe
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.deps.json
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.runtimeconfig.json
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.dll
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\bin\Debug\net8.0\StudentManagementSystem.pdb
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.AssemblyInfoInputs.cache
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.AssemblyInfo.cs
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.sourcelink.json
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.dll
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\refint\StudentManagementSystem.dll
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.pdb
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\StudentManagementSystem.genruntimeconfig.cache
+C:\Users\Mpumi\Documents\GitHub\PROG_ICE1\StudentManagementSystem\obj\Debug\net8.0\ref\StudentManagementSystem.dll

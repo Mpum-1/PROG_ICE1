@@ -26,7 +26,7 @@ namespace StudentManagementSystem
                 Console.WriteLine("1. Add Student");
                 Console.WriteLine("2. Merge Two Lists");
                 Console.WriteLine("3. Compare Performance of Two Students");
-                Console.WriteLine("4. View Top Performing Students");
+                Console.WriteLine("4. Students");
                 Console.WriteLine("5. Exit");
                 Console.Write("Choose an option: ");
 
@@ -43,7 +43,7 @@ namespace StudentManagementSystem
                         CompareStudents();
                         break;
                     case "4":
-                        ViewTopPerformingStudents();
+                        ViewStudents();
                         break;
                     case "5":
                         return;
@@ -68,7 +68,6 @@ namespace StudentManagementSystem
             Console.Write("Enter Academic Performance (0-100): ");
             if (int.TryParse(Console.ReadLine(), out int performance) && performance >= 0 && performance <= 100)
             {
-                // Assuming different student types: Undergraduate, Postgraduate, PartTime
                 Console.Write("Enter Student Type (1- Undergraduate, 2- Postgraduate, 3- PartTime): ");
                 string studentTypeInput = Console.ReadLine();
                 Student student = null;
@@ -101,62 +100,17 @@ namespace StudentManagementSystem
 
         private void MergeLists()
         {
-            // Create a new list to merge with the current one
+            Console.Write("Enter the path to the second list file: ");
+            string filePath = Console.ReadLine();
+
+            // For simplicity, we assume the second list is loaded from a file or predefined.
+            // You might need additional code to load this list from a file or another source.
             StudentList<Student> secondList = new StudentList<Student>();
+            // Add your method to load students from the file or other source
+            // Example: secondList = LoadStudentsFromFile(filePath);
 
-            Console.WriteLine("Creating a new list to merge with the current one.");
-            Console.Write("Enter the number of students to add to the second list: ");
-            if (int.TryParse(Console.ReadLine(), out int numberOfStudents) && numberOfStudents > 0)
-            {
-                for (int i = 0; i < numberOfStudents; i++)
-                {
-                    Console.Write("Enter Student Name: ");
-                    string name = Console.ReadLine();
-
-                    Console.Write("Enter Course: ");
-                    string course = Console.ReadLine();
-
-                    Console.Write("Enter Department: ");
-                    string department = Console.ReadLine();
-
-                    Console.Write("Enter Academic Performance (0-100): ");
-                    if (int.TryParse(Console.ReadLine(), out int performance) && performance >= 0 && performance <= 100)
-                    {
-                        Console.Write("Enter Student Type (1- Undergraduate, 2- Postgraduate, 3- PartTime): ");
-                        string studentTypeInput = Console.ReadLine();
-                        Student student = null;
-
-                        switch (studentTypeInput)
-                        {
-                            case "1":
-                                student = new Undergraduate(name, course, department, performance);
-                                break;
-                            case "2":
-                                student = new Postgraduate(name, course, department, performance);
-                                break;
-                            case "3":
-                                student = new PartTime(name, course, department, performance);
-                                break;
-                            default:
-                                Console.WriteLine("Invalid student type.");
-                                continue;
-                        }
-
-                        secondList.Add(student);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid performance value.");
-                    }
-                }
-
-                studentList += secondList;  // Merge the two lists
-                Console.WriteLine("Lists merged successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Invalid number of students.");
-            }
+            studentList += secondList;  // Merges the two lists
+            Console.WriteLine("Lists merged successfully.");
             Console.ReadKey();
         }
 
@@ -222,5 +176,150 @@ namespace StudentManagementSystem
             }
             Console.ReadKey();
         }
+
+        private void ViewStudents()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("---- View Students ----");
+                Console.WriteLine("1. View All Students");
+                Console.WriteLine("2. Search Students by Name");
+                Console.WriteLine("3. Filter Students by Department");
+                Console.WriteLine("4. Filter Students by Course");
+                Console.WriteLine("5. Sort Students by Performance");
+                Console.WriteLine("6. Back to Main Menu");
+                Console.Write("Choose an option: ");
+
+                string input = Console.ReadLine();
+                switch (input)
+                {
+                    case "1":
+                        ViewAllStudents();
+                        break;
+                    case "2":
+                        SearchStudents();
+                        break;
+                    case "3":
+                        FilterStudents();
+                        break;
+                    case "4":
+                        FilterStudentsCourse();
+                        break;
+                    case "5":
+                        SortStudents();
+                        break;
+                    case "6":
+                        return;
+                    default:
+                        Console.WriteLine("Invalid option. Please try again.");
+                        break;
+                }
+            }
+        }
+
+        private void ViewAllStudents()
+        {
+            Console.Clear();
+            Console.WriteLine("---- All Students ----");
+
+            if (studentList.Count == 0)
+            {
+                Console.WriteLine("No students available.");
+            }
+            else
+            {
+                for (int i = 0; i < studentList.Count; i++)
+                {
+                    Student student = studentList[i];
+                    Console.WriteLine($"{i + 1}. {student.Name} - {student.Course} - {student.Department} - {student.AcademicPerformance}");
+                }
+            }
+            Console.ReadKey();
+        }
+
+        private void SearchStudents()
+        {
+            Console.Write("Enter name to search: ");
+            string name = Console.ReadLine();
+
+            var results = studentList.FindName(name);
+            if (results.Count == 0)
+            {
+                Console.WriteLine("No students found.");
+            }
+            else
+            {
+                Console.WriteLine("---- Search Results ----");
+                foreach (var student in results)
+                {
+                    Console.WriteLine($"{student.Name} - {student.Course} - {student.Department} - {student.AcademicPerformance}");
+                }
+            }
+            Console.ReadKey();
+        }
+
+        private void FilterStudents()
+        {
+            Console.Write("Enter department to filter by: ");
+            string department = Console.ReadLine();
+
+            var results = studentList.FilterByDepartment(department);
+            if (results.Count == 0)
+            {
+                Console.WriteLine("No students found in the specified department.");
+            }
+            else
+            {
+                Console.WriteLine("---- Filter Results ----");
+                foreach (var student in results)
+                {
+                    Console.WriteLine($"{student.Name} - {student.Course} - {student.Department} - {student.AcademicPerformance}");
+                }
+            }
+            Console.ReadKey();
+        }
+        private void FilterStudentsCourse()
+        {
+            Console.Write("Enter course to filter by: ");
+            string course = Console.ReadLine();
+
+            var results = studentList.FilterByDepartment();
+            if (results.Count == 0)
+            {
+                Console.WriteLine("No students found in the specified department.");
+            }
+            else
+            {
+                Console.WriteLine("---- Filter Results ----");
+                foreach (var student in results)
+                {
+                    Console.WriteLine($"{student.Name} - {student.Course} - {student.Department} - {student.AcademicPerformance}");
+                }
+            }
+            Console.ReadKey();
+        }
+
+        private void SortStudents()
+        {
+            Console.WriteLine("Sort by academic performance:");
+            Console.WriteLine("1. Ascending");
+            Console.WriteLine("2. Descending");
+            Console.Write("Choose an option: ");
+
+            string input = Console.ReadLine();
+            bool ascending = input == "1";
+
+            var sortedStudents = studentList.SortByPerformance(ascending);
+
+            Console.WriteLine("---- Sorted Students ----");
+            foreach (var student in sortedStudents)
+            {
+                Console.WriteLine($"{student.Name} - {student.Course} - {student.Department} - {student.AcademicPerformance}");
+            }
+            Console.ReadKey();
+        }
+  
+        
     }
 }

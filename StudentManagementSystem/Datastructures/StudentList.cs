@@ -48,5 +48,25 @@ namespace StudentManagementSystem.Datastructures
             mergedList._students.AddRange(list2._students);
             return mergedList;
         }
+
+        public List <T> FindName(string name)
+        {
+            return _students.Where(s => s.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        public List <T> FilterByDepartment(string department)
+        {
+            return _students.Where(s => s.Department.Equals(department, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        public List<T> SortByPerformance(bool ascending = true)
+        {
+            return ascending
+                ? _students.OrderBy(s => s.AcademicPerformance).ToList()
+                : _students.OrderByDescending(s => s.AcademicPerformance).ToList();
+        }
+        public List<T> FilterByCourse(string course)
+        {
+            return _students.Where(s => s.Course.Equals(course, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
     }
 }
