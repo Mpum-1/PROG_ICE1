@@ -284,7 +284,7 @@ namespace StudentManagementSystem
             Console.Write("Enter course to filter by: ");
             string course = Console.ReadLine();
 
-            var results = studentList.FilterByDepartment();
+            var results = studentList.FilterByCourse(course);
             if (results.Count == 0)
             {
                 Console.WriteLine("No students found in the specified department.");
