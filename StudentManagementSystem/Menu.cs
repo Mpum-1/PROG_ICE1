@@ -24,7 +24,7 @@ namespace StudentManagementSystem
                 Console.Clear();
                 Console.WriteLine("---- IIEMSA Student Management System ----");
                 Console.WriteLine("1. Add Student");
-                Console.WriteLine("2. Merge Two Lists");
+                Console.WriteLine("2. Merge Two Departments");
                 Console.WriteLine("3. Compare Performance of Two Students");
                 Console.WriteLine("4. Students");
                 Console.WriteLine("5. Exit");
@@ -65,7 +65,7 @@ namespace StudentManagementSystem
             Console.Write("Enter Department: ");
             string department = Console.ReadLine();
 
-            Console.Write("Enter Academic Performance (0-100): ");
+            Console.Write("Enter Course percentage (0-100): ");
             if (int.TryParse(Console.ReadLine(), out int performance) && performance >= 0 && performance <= 100)
             {
                 Console.Write("Enter Student Type (1- Undergraduate, 2- Postgraduate, 3- PartTime): ");
@@ -100,62 +100,61 @@ namespace StudentManagementSystem
 
         private void MergeLists()
         {
-            Console.Write("Enter the path to the second list file: ");
-            string filePath = Console.ReadLine();
+            Console.Write("Enter the department to merge from: ");
+            string fromDepartment = Console.ReadLine();
 
-            // For simplicity, we assume the second list is loaded from a file or predefined.
-            // You might need additional code to load this list from a file or another source.
-            StudentList<Student> secondList = new StudentList<Student>();
-            // Add your method to load students from the file or other source
-            // Example: secondList = LoadStudentsFromFile(filePath);
+            Console.Write("Enter the department to merge into: ");
+            string toDepartment = Console.ReadLine();
 
-            studentList += secondList;  // Merges the two lists
-            Console.WriteLine("Lists merged successfully.");
+            studentList.MergeDepartments(fromDepartment, toDepartment);
+
+            Console.WriteLine($"Successfully merged '{fromDepartment}' into '{toDepartment}'.\n");
+
+            Console.WriteLine($"Students now in the '{toDepartment}' department:");
+            foreach (var student in studentList)
+            {
+                if (student.Department.Equals(toDepartment, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine($"{student.Name} - {student.Course} - {student.AcademicPerformance}");
+                }
+            }
             Console.ReadKey();
         }
 
         private void CompareStudents()
         {
-            if (studentList.Count < 2)
+            Console.Write("Enter the name of the first student: ");
+            string name1 = Console.ReadLine();
+
+            Console.Write("Enter the name of the second student: ");
+            string name2 = Console.ReadLine();
+
+            var student1 = studentList.FirstOrDefault(s => s.Name.Equals(name1, StringComparison.OrdinalIgnoreCase));
+            var student2 = studentList.FirstOrDefault(s => s.Name.Equals(name2, StringComparison.OrdinalIgnoreCase));
+
+            if (student1 == null || student2 == null)
             {
-                Console.WriteLine("Not enough students to compare.");
+                Console.WriteLine("One or both of the students were not found.");
             }
             else
             {
-                Console.Write("Enter index of first student to compare: ");
-                if (int.TryParse(Console.ReadLine(), out int index1) && index1 >= 0 && index1 < studentList.Count)
+                if (student1.AcademicPerformance > student2.AcademicPerformance)
                 {
-                    Console.Write("Enter index of second student to compare: ");
-                    if (int.TryParse(Console.ReadLine(), out int index2) && index2 >= 0 && index2 < studentList.Count)
-                    {
-                        Student student1 = studentList[index1];
-                        Student student2 = studentList[index2];
-
-                        if (student1.AcademicPerformance > student2.AcademicPerformance)
-                        {
-                            Console.WriteLine($"{student1.Name} has a better academic performance than {student2.Name}");
-                        }
-                        else if (student1.AcademicPerformance < student2.AcademicPerformance)
-                        {
-                            Console.WriteLine($"{student2.Name} has a better academic performance than {student1.Name}");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"{student1.Name} and {student2.Name} have the same academic performance.");
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Invalid index for the second student.");
-                    }
+                    Console.WriteLine($"{student1.Name} has a better academic performance than {student2.Name}");
+                }
+                else if (student1.AcademicPerformance < student2.AcademicPerformance)
+                {
+                    Console.WriteLine($"{student2.Name} has a better academic performance than {student1.Name}");
                 }
                 else
                 {
-                    Console.WriteLine("Invalid index for the first student.");
+                    Console.WriteLine($"{student1.Name} and {student2.Name} have the same academic performance.");
                 }
             }
+
             Console.ReadKey();
         }
+
 
         private void ViewTopPerformingStudents()
         {

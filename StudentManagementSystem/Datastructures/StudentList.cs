@@ -1,5 +1,6 @@
 ﻿using StudentManagementSystem.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StudentManagementSystem.Datastructures
 {
-    public class StudentList<T> where T : Student
+    public class StudentList<T> : IEnumerable<T> where T : Student
     {
         private List<T> _students;
 
@@ -25,7 +26,15 @@ namespace StudentManagementSystem.Datastructures
         {
             _students.Remove(student);
         }
+        public IEnumerator<T> GetEnumerator()
+        {
+            return _students.GetEnumerator();
+        }
 
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
         public T this[int index]
         {
             get { return _students[index]; }
@@ -48,7 +57,17 @@ namespace StudentManagementSystem.Datastructures
             mergedList._students.AddRange(list2._students);
             return mergedList;
         }
-
+        public void MergeDepartments(string fromDepartment, string toDepartment)
+        {
+            foreach (var student in _students)
+            {
+                if (student.Department.Equals(fromDepartment, StringComparison.OrdinalIgnoreCase))
+                {
+                    student.Department = toDepartment;
+                }
+            }
+        }
+    
         public List <T> FindName(string name)
         {
             return _students.Where(s => s.Name.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
